@@ -14,13 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      otp_codes: {
+        Row: {
+          attempts: number | null
+          code: string
+          created_at: string
+          expires_at: string
+          id: string
+          type: string
+          used: boolean | null
+          user_id: string
+        }
+        Insert: {
+          attempts?: number | null
+          code: string
+          created_at?: string
+          expires_at: string
+          id?: string
+          type: string
+          used?: boolean | null
+          user_id: string
+        }
+        Update: {
+          attempts?: number | null
+          code?: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+          type?: string
+          used?: boolean | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          backup_codes: string[] | null
+          created_at: string
+          display_name: string | null
+          id: string
+          totp_secret: string | null
+          two_factor_enabled: boolean | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          backup_codes?: string[] | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          totp_secret?: string | null
+          two_factor_enabled?: boolean | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          backup_codes?: string[] | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          totp_secret?: string | null
+          two_factor_enabled?: boolean | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      cleanup_expired_otps: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
